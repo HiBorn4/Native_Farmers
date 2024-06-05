@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "326313983448",
+    "project_id": "nativefarmers-43031",
+    "storage_bucket": "nativefarmers-43031.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326313983448:android:17ec12d1553e8bac7dc6ad",
+        "android_client_info": {
+          "package_name": "com.example.native_farmers"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYn3uIYZI6hUJViK2V8c55ih_anuHmLfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
