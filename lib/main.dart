@@ -1,12 +1,19 @@
 // ignore_for_file: avoid_print
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'pages/login_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const App());
+  runApp(
+    Sizer(
+      builder: (context, orientation, deviceType) {
+        return const App();
+      },
+    ),
+  );
 }
 
 class App extends StatelessWidget {
@@ -15,12 +22,9 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // Initialize FlutterFire
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {
-        // Check for errors
         if (snapshot.hasError) {
-          // Print the error message to the console
           print(snapshot.error);
           return MaterialApp(
             home: Scaffold(
@@ -31,12 +35,10 @@ class App extends StatelessWidget {
           );
         }
 
-        // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
           return const MyApp();
         }
 
-        // Otherwise, show something whilst waiting for initialization to complete
         return const MaterialApp(
           home: Scaffold(
             body: Center(

@@ -34,6 +34,8 @@ dependencies:
   firebase_auth: ^4.0.0
   modal_bottom_sheet: ^2.1.2
   country_code_picker: ^3.0.0
+  sizer: ^2.0.15
+
 
 
 

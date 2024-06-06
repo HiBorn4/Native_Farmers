@@ -1,81 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'home_screen.dart';
+import 'package:sizer/sizer.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
+          // Top half of the screen for the logo and skip button
           Expanded(
             flex: 1,
-            child: Container(
-              color: Colors.green,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        color: const Color(0xFF0D813D), // Green color code
-                        child: Center(
-                          child: Image.asset(
-                            'assets/native_farmers_logo.png', // Replace with your image path
-                            width: 200,
-                            height: 200,
-                          ),
-                        ),
-                      ),
+            child: Stack(
+              children: <Widget>[
+                Container(
+                  width: 100.w, // 100% of the screen width
+                  height: 50.h, // 50% of the screen height
+                  color: const Color(0xFF0D813D), // Green color code
+                  child: Center(
+                    child: Image.asset(
+                      'assets/native_farmers_logo.png', // Replace with your image path
+                      width: 50.w, // 50% of the screen width
+                      height: 25.h, // 25% of the screen height
                     ),
-                    Positioned(
-                      top: 40,
-                      right: 10,
-                      child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
-                        },
-                        child: const Text(
-                          'Skip',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                Positioned(
+                  top: 5.h, // 5% of the screen height from the top
+                  right: 5.w, // 5% of the screen width from the right
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    },
+                    child: const Text(
+                      'Skip',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
+          // Bottom half of the screen for the registration form
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(5.w), // Padding as 5% of the screen width
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  const Text('REGISTER',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 10),
+                  const Text(
+                    'REGISTER',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 2.h), // 2% of the screen height
                   const Text('Please enter your mobile number to register'),
-                  const SizedBox(height: 20),
-                  const Row(
+                  SizedBox(height: 3.h), // 3% of the screen height
+                  Row(
                     children: <Widget>[
-                      CountryCodePicker(
+                      const CountryCodePicker(
                         onChanged: print,
                         initialSelection: 'US',
                         favorite: ['+1', 'US'],
                       ),
-                      Expanded(
+                      SizedBox(width: 2.w), // 2% of the screen width
+                      const Expanded(
                         child: TextField(
                           decoration: InputDecoration(
                             labelText: 'Mobile Number',
@@ -85,12 +80,15 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Implement phone authentication
-                    },
-                    child: const Text('Register'),
+                  SizedBox(height: 4.h), // 4% of the screen height
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Implement phone authentication
+                      },
+                      child: const Text('Register'),
+                    ),
                   ),
                 ],
               ),
