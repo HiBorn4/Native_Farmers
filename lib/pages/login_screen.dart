@@ -13,7 +13,25 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String phoneNumber = '';
+  final TextEditingController _phoneController = TextEditingController();
+  String _phoneNumber = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneController.addListener(() {
+      setState(() {
+        _phoneNumber = _phoneController.text;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    super.dispose();
+  }
+
   String smsCode = '';
   String verificationId = '';
 
@@ -21,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void verifyPhone() async {
     await _auth.verifyPhoneNumber(
-      phoneNumber: phoneNumber,
+      phoneNumber: _phoneNumber,
       verificationCompleted: (PhoneAuthCredential credential) async {
         await _auth.signInWithCredential(credential);
         Navigator.pushReplacement(
@@ -78,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 40.h,
                 color: Colors.transparent,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 10.h),
+                  padding: EdgeInsets.only(top: 8.h),
                   child: Center(
                     child: Image.asset(
                       'assets/native_farmers_logo.png', // Replace with your image path
@@ -96,8 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25.w),
-                        topRight: Radius.circular(25.w),
+                        topLeft: Radius.circular(20.w),
+                        topRight: Radius.circular(20.w),
                       ),
                       boxShadow: [
                         BoxShadow(
@@ -122,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 10.h), // Added spacing
+                            SizedBox(height: 8.h), // Added spacing
                             const Text(
                               'People who eat organic foods have seen 30% decrement in digestion related problems',
                               textAlign: TextAlign.center,
@@ -131,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontSize: 16,
                               ),
                             ),
-                            SizedBox(height: 10.h), // Added spacing
+                            SizedBox(height: 8.h), // Added spacing
                             Container(
                               width: 90.w,
                               padding: EdgeInsets.symmetric(horizontal: 2.w),
@@ -143,21 +161,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                 children: <Widget>[
                                   CountryCodePicker(
                                     onChanged: (country) {
-                                      // phoneNumber = country.dialCode!;
+                                      // Handle country code change
                                     },
                                     initialSelection: 'भारत',
                                     favorite: const ['+91', 'भारत'],
                                   ),
-                                  const Expanded(
+                                  Expanded(
                                     child: TextField(
-                                      decoration: InputDecoration(
+                                      controller: _phoneController,
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         labelText: 'Mobile Number',
                                       ),
                                       keyboardType: TextInputType.phone,
-                                      // onChanged: (value) {
-                                      //   phoneNumber = value;
-                                      // },
                                     ),
                                   ),
                                 ],
