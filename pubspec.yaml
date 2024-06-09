@@ -69,8 +69,8 @@ flutter:
   assets:
     - assets/native_farmers_logo.png
     - assets/temp.png
-    - assets/person.jpg
-    - assets/farmer_spraying.jpg
+    - assets/user.png
+    - assets/farmer.webp
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

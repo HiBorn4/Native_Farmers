@@ -26,53 +26,51 @@ class FeatureCard extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.only(
-          top: 1.5.h,
+          top: 1.h,
           left: 4.5.w,
           right: 3.w,
-          bottom: 2.h,
+          bottom: 1.h,
         ),
         child: Row(
           children: [
-            Expanded(
-              flex: 1,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 50.w,
+                  child: Text(
                     smallText,
                     style: TextStyle(
-                      fontSize: 8.sp,
+                      fontSize: 9.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    mediumText,
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade50,
-                    ),
+                ),
+                Text(
+                  mediumText,
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey.shade400,
                   ),
-                  Text(
-                    largeText,
-                    style: TextStyle(
-                      fontSize: 35.sp,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
+                ),
+                Text(
+                  largeText,
+                  style: TextStyle(
+                    fontSize: 40.sp,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
                   ),
-                ],
+                ),
+              ],
+            ),
+            Expanded(
+              flex: 1,
+              child: Image.asset(
+                imagePath,
               ),
             ),
-            // Expanded(
-            // flex: 1,
-            // child:
-            Image.asset(
-              imagePath,
-              height: 30.h, // Customize the height of the image here
-            ),
-            // ),
           ],
         ),
       ),
