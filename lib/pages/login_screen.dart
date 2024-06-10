@@ -160,9 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Row(
                                 children: <Widget>[
                                   CountryCodePicker(
-                                    onChanged: (country) {
-                                      // Handle country code change
-                                    },
+                                    onChanged: (country) {},
                                     initialSelection: 'भारत',
                                     favorite: const ['+91', 'भारत'],
                                   ),
