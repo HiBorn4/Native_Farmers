@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unused_field, unused_element, duplicate_ignore
 
 import 'dart:async';
 
@@ -497,7 +497,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.transparent,
+              backgroundColor: Colors.transparent,
               shadowColor: Colors.transparent,
             ),
             onPressed: onNextPressed,
